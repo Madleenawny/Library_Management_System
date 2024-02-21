@@ -1,0 +1,35 @@
+﻿@model List<Borrow>
+@{
+    ViewData["Title"] = "BorrowedBook";
+}
+
+<h1> currently borrowed books </h1>
+
+
+<table class="table">
+    <thead class="table-dark">
+        <th>ID</th>
+        <th>Book Title</th>
+        <th>Reader Name</th>
+        <th>Borrow Date</th>
+        <th>Duration Time</th>
+        <th>Returned Date</th>
+    </thead>
+
+    <tbody>
+      
+        @foreach (Borrow brwItem in ViewBag.BrwBokList)
+        {
+            <tr>
+                <td>@brwItem.ID</td>
+                <td>@brwItem.Books.Title</td>
+                <td>@brwItem.Readers.Name</td>
+                <td>@brwItem.BrwDate</td>
+                <td>@brwItem.BrwDuration</td>
+                <td>@brwItem.ReturnedDate</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<a asp-controller="Borrowing" asp-action="Index">Back To List</a>

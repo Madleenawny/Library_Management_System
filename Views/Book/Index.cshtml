@@ -1,0 +1,62 @@
+@using Final.Models;
+
+@model List<Book>
+
+@{
+    ViewData["Title"] = "index";
+}
+
+<h2>Index</h2>
+
+<a asp-controller="Book" asp-action="New" class="btn btn-success">New Book</a>
+
+<table class="table">
+    <thead class="table-dark">
+    <th>ID</th>
+    <th>Name</th>
+    <th>Author</th>
+    <th>Langauge Of Book</th>
+    <th>Category Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.Title</td>
+                <td>@item.Author</td>
+                <td>@item.LangOfBook</td>
+                <td>@item.CatgID</td>
+                <td>
+                    <a asp-controller="Book" asp-action="details" asp-route-id="@item.ID" title="Details">
+                        <i class="fa-solid fa-file-circle-info"></i>
+                    </a>
+                </td>
+                <td>
+                    <a asp-controller="Book" asp-action="Edit" asp-route-id="@item.ID" title="Edit">
+                        <i class="fa-solid fa-file-pen"></i>
+                    </a>
+                </td>
+                <td>
+                    <a asp-controller="Book" asp-action="Delete" asp-route-id="@item.ID" title="Delete">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+

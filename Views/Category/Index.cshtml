@@ -1,0 +1,63 @@
+﻿@model List<Category>
+
+@{
+    ViewData["Title"] = "index";
+}
+
+
+<div class="row">
+    <div class="col-sm-3">
+        <h2>Index</h2>
+    </div>
+    <div class="col-sm-5"></div>
+    <div class="col-sm-2">
+        <a asp-controller="Category" asp-action="AllBooksInCateg" class="btn btn-success">View Categories</a>
+    </div>
+    <div class="col-sm-2">
+         <a asp-controller="Category" asp-action="New" class="btn btn-success">New Category</a>
+    </div>
+</div>
+
+<br>
+
+<table class="table">
+    <thead class="table-dark">
+      <th>ID</th>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </thead>
+    @foreach(var item in Model){
+    <tbody>
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.CatgName</td>
+            <td>
+                <a asp-controller="Category" asp-action="details" asp-route-id="@item.ID" title="Details">
+                    <i class="fa-solid fa-file-circle-info"></i>
+                </a>
+            </td>
+            <td>
+                <a asp-controller="Category" asp-action="Edit" asp-route-id="@item.ID" title="Edit">
+                    <i class="fa-solid fa-file-pen"></i>
+                </a>
+            </td>
+            <td>
+                <a asp-controller="Category" asp-action="Delete" asp-route-id="@item.ID" title="Delete">
+                    <i class="fa-solid fa-trash"></i>
+                </a>
+            </td>
+        </tr>
+    </tbody> 
+    }
+</table>
+
+
+
+
+
+
+
+
+

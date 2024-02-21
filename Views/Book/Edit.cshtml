@@ -1,0 +1,66 @@
+﻿@model Book
+@{
+    ViewData["Title"] = "Edit";
+    SelectList CatgList = new SelectList(ViewBag.CatgList, "ID", "CatgName");
+}
+
+
+<h1>Edit</h1>
+
+
+<form method="post" asp-controller="Book" asp-action="SaveEdit" asp-route-id="@Model.ID">
+   
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Title</span>
+        <input asp-for="Title" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Author</span>
+        <input asp-for="Author" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Language Of Book</span>
+        <input asp-for="LangOfBook" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    </div>
+
+ 
+    <div class="input-group mb-3">
+        <span asp-for="CatgID" class="input-group-text" id="inputGroup-sizing-default">Category Name</span>
+        <select name="CatgID" id="CatgID" class="form-select" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            @foreach (Category catgItem in ViewBag.CatgList)
+            {
+                if (Model.CatgID == catgItem.ID)
+                {
+                   <option value="@catgItem.ID" selected>@catgItem.CatgName</option>
+                }
+                else
+                {
+                    <option value="@catgItem.ID">@catgItem.CatgName</option>
+                }
+            }
+        </select>
+       
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3">
+            <a asp-controller="Book" asp-action="Index" class="btn btn-primary">Back To List</a>
+        </div>
+        <div class="col-sm-3"></div>
+        <div class="col-sm-3"></div>
+        <div class="col-sm-3">
+            <input type="submit" class="btn btn-primary" value="Save" />
+        </div>
+    </div>
+
+</form>
+
+
+
+

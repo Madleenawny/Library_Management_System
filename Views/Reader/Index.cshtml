@@ -1,0 +1,60 @@
+@model List<Reader>
+
+@{
+    ViewData["Title"] = "index";
+}
+
+
+<div class="row">
+    <div class="col-sm-4">
+        <h2>Index</h2>
+    </div>
+    <div class="col-sm-5"></div>
+    <div class="col-sm-3">
+        <a asp-controller="Reader" asp-action="New" class="btn btn-success">New Reader</a>
+    </div>
+</div>
+
+<br>
+
+<table class="table">
+    <thead class="table-dark">
+    <th>ID</th>
+    <th>Name</th>
+    <th>ISBN</th>
+    <th>Address</th>
+    <th>Phone</th>
+    <th>Email</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>              
+                <td>@item.ID</td>
+                <td>@item.Name</td>
+                <td>@item.ISBN</td>
+                <td>@item.Address</td>
+                <td>@item.Phone</td>
+                <td>@item.Email</td>
+                <td>
+                    <a asp-controller ="Reader" asp-action="details" asp-route-id="@item.ID" title="Details">
+                        <i class="fa-solid fa-file-circle-info"></i>
+                    </a>
+                </td>
+                <td>
+                    <a asp-controller="Reader" asp-action="Edit" asp-route-id="@item.ID" title="Edit">
+                        <i class="fa-solid fa-file-pen"></i>
+                    </a>
+                </td>
+                <td>
+                    <a asp-controller="Reader" asp-action="Delete" asp-route-id="@item.ID" title="Delete">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    }
+</table>

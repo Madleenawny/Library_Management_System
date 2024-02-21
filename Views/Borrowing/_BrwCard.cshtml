@@ -1,0 +1,17 @@
+﻿@model Borrow
+
+<div class="card">
+    <div class="card-header">
+        Borrowing Data
+    </div>
+    <div class="card-body">
+        <blockquote class="blockquote mb-0">
+            <h2 class="card-title"> <small>Title Book:-       </small> @Model.BookID</h2>
+            <h3 class="card-text">  <small>Reader Name:-      </small> @Model.ReaderID</h3>
+            <h5 class="card-text">  <small>Borrow Date:-      </small> @Model.BrwDate</h5>            
+            <h5 class="card-text">  <small>Borrow Duration:-  </small> @Model.BrwDuration</h5>
+            <h5 class="card-text">  <small>Returned In:-      </small> @Model.ReturnedDate</h5><br />
+            <footer class="blockquote-footer"> <small>Number Of Days Late:- </small>@Model.NumOfDaysLate</footer>
+        </blockquote>
+    </div>
+</div>

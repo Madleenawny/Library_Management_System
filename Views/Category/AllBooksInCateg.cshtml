@@ -1,0 +1,40 @@
+﻿@model List<Category>
+@{
+    ViewData["Title"] = "test";
+}
+
+
+<div class="container mt-3">
+    <h2>Sort Books In Category</h2>
+</div>
+
+<div class="container mt-3">
+    <ul class="list-group list-group-flush">
+        
+        @foreach (var Item in ViewBag.CatgList)
+        {
+            <li class="list-group"><h3>@Item.ID - @Item.CatgName</h3></li> 
+            @foreach (var tt in Item.Books)
+            {
+                <li class="list-group-item" style="border:solid #1abc9c 1px; border-radius:5px; margin-left:100px;">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            @tt.Title
+                        </div>
+                        <div class="col-sm-5"></div>
+                        <div class="col-sm-2">
+                            <a asp-controller="Book" asp-action="details" asp-route-id="@tt.ID" >Details</a>
+                         </div>
+                    </div>
+                </li>
+            }
+         
+            <br />
+            <br />
+        }
+       
+    </ul> 
+</div>
+
+<br />
+<a asp-controller="Category" asp-action="Index" class="btn btn-primary">BackToList</a>

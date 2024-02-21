@@ -1,0 +1,32 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+
+<form method="post" asp-controller="Category" asp-action="SaveEdit" asp-route-id="@Model.ID">
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Category Name</span>
+        <input asp-for="CatgName" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        <span asp-validation-for="CatgName" class="text-danger"></span>
+    </div>
+
+    <br />
+    <div class="row">
+        <div class="col-sm-3">
+            <a asp-controller="Category" asp-action="Index" class="btn btn-primary">Back To List</a>
+        </div>
+        <div class="col-sm-3"></div>
+        <div class="col-sm-3"></div>
+        <div class="col-sm-3">
+            <input type="submit" class="btn btn-primary" value="Save" />
+        </div>
+    </div>
+</form>
+
+
+
+

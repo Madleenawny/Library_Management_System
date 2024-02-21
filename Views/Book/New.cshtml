@@ -1,0 +1,50 @@
+@model Book
+
+@{
+    ViewData["Title"] = "New";
+    SelectList CatgItem = new SelectList(ViewBag.CatgList, "ID", "CatgName");
+}
+
+<h1>New Book</h1>
+
+<form method="post" asp-controller="Book" asp-action="SaveNew">
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Title Book</span>
+        <input asp-for="Title" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Author</span>
+        <input asp-for="Author" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        <span asp-validation-for="Author" class="text-danger"></span>
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Language Of Book</span>
+        <input asp-for="LangOfBook" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    </div>
+
+    <div class="input-group mb-3">
+        <span asp-for="CatgID" class="input-group-text" id="inputGroup-sizing-default">Category</span>
+        <select asp-items="CatgItem" asp-for="CatgID" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <option value="0">  -- Select Category -- </option>
+        </select>
+        @*<input asp-for="CatgID" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">*@
+
+        <span asp-validation-for="CatgID" class="text-danger"></span>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3">
+            <a asp-controller="Book" asp-action="Index" class="btn btn-primary">Back To List</a>
+        </div>
+        <div class="col-sm-3"></div>
+        <div class="col-sm-3"></div>
+        <div class="col-sm-3">
+            <input type="submit" class="btn btn-primary" value="Create" />
+        </div>
+    </div>
+</form>
+

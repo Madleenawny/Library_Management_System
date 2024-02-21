@@ -1,0 +1,78 @@
+@model List<Borrow>
+
+@{
+    ViewData["Title"] = "Index";
+    //SelectList BrwBokList = new SelectList(ViewBag.BrwBokList, "ID", "BrwDuration");
+}
+
+
+
+
+<div class="row">
+    <div class="col-sm-2">
+        <h2>Index</h2>
+    </div>
+    <div class="col-sm-3"></div>
+    <div class="col-sm-2">
+        <a asp-controller="Borrowing" asp-action="New" class="btn btn-success">New Borrowing Activity</a>
+    </div>
+    <div class="col-sm-2">
+        <a asp-controller="Borrowing" asp-action="BorrowedBook" class="btn btn-success">Books Still borrowing</a>
+    </div>
+    <div class="col-sm-3">
+        <a asp-controller="Borrowing" asp-action="BooksDueToBeReturned" class="btn btn-success">Books Due To Be Returned</a>
+    </div>
+</div>
+
+<br>
+
+
+
+
+
+
+<table class="table">
+    <thead class="table-dark">
+        <th>ID</th>
+        <th>Title Book</th>
+        <th>Reader Name</th>
+        <th>Borrow Date</th>
+        <th>Returned Date</th>
+        <td>Borrow Duration</td>
+        <td>Returned In</td>
+        <td>NumOfDaysLate</td>
+        <th></th>
+        <th></th>
+        <th></th>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.Books.Title</td>
+                <td>@item.Readers.Name</td>                
+                <td>@item.BrwDate</td>
+                <td>@item.ReturnedDate</td>
+                <td>@item.BrwDuration</td>
+                <td>@item.ReturnedIn</td>
+                <td>@item.NumOfDaysLate</td>
+                <td>
+                    <a asp-controller="Borrowing" asp-action="details" asp-route-id="@item.ID" title="Details">
+                        <i class="fa-solid fa-file-circle-info"></i>
+                    </a>
+                </td>
+                <td>
+                    <a asp-controller="Borrowing" asp-action="Edit" asp-route-id="@item.ID" title="Edit">
+                        <i class="fa-solid fa-file-pen"></i>
+                    </a>
+                </td>
+                <td>
+                    <a asp-controller="Borrowing" asp-action="Delete" asp-route-id="@item.ID" title="Delete">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    }
+</table>

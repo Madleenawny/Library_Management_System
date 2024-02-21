@@ -1,0 +1,97 @@
+@model Borrow
+@{
+    ViewData["Title"] = "Edit";
+    SelectList RedList = new SelectList(ViewBag.RedList, "ID", "Name");
+    SelectList BokList = new SelectList(ViewBag.BokList, "ID", "Title");
+}
+
+
+
+<h1>Edit</h1>
+
+
+<form method="post" asp-controller="Borrowing" asp-action="SaveEdit" asp-route-id="@Model.ID">
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="input-group mb-3">
+        <span asp-for="BookID"  class="input-group-text" id="inputGroup-sizing-default">Book</span>
+        <select name="BookID" id="BookID" class="form-select" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            @foreach (Book BokItem in ViewBag.BokList)
+            {
+                if (Model.BookID == BokItem.ID)
+                {
+                    <option value="@BokItem.ID" selected>@BokItem.Title</option>
+                }
+                else
+                {
+                    <option value="@BokItem.ID">@BokItem.Title</option>
+                }
+            }
+        </select>
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Reader</span>
+         <select name="ReaderID" id="ReaderID" class="form-select" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        @foreach (Reader RedItem in ViewBag.RedList)
+        {
+        if (Model.ReaderID == RedItem.ID)
+        {
+        <option value="@RedItem.ID" selected>@RedItem.Name</option>
+        }
+        else
+        {
+        <option value="@RedItem.ID">@RedItem.Name</option>
+        }
+        }
+        </select>
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Borrow Date</span>
+        <input asp-for="BrwDate" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        <span asp-validation-for="BrwDate" class="text-danger"></span>
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">ReturnedDate</span>
+        <input asp-for="ReturnedDate" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        <span asp-validation-for="ReturnedDate" class="text-danger"></span>
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Borrow Duration</span>
+        <input asp-for="BrwDuration" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        <span asp-validation-for="BrwDuration" class="text-danger"></span>
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Returned In</span>
+        <input asp-for="ReturnedIn" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        <span asp-validation-for="ReturnedIn" class="text-danger"></span>
+    </div> 
+    
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Returned In</span>
+        <input asp-for="NumOfDaysLate" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        <span asp-validation-for="NumOfDaysLate" class="text-danger"></span>
+    </div>
+     
+    <br />
+
+    <div class="row">
+        <div class="col-sm-3">
+            <a asp-controller="Borrowing" asp-action="Index" class="btn btn-primary">Back To List</a>
+        </div>
+        <div class="col-sm-3"></div>
+        <div class="col-sm-3"></div>
+        <div class="col-sm-3">
+            <input type="submit" class="btn btn-primary" value="Save" />
+        </div>
+    </div>
+</form>
+
+
+
+

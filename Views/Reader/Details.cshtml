@@ -1,0 +1,13 @@
+@model Reader
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+
+<partial name="_ReaderCard" model="Model"></partial>
+
+<br />
+
+<a asp-controller="Reader" asp-action="Index" class="btn btn-primary">Back To List</a>

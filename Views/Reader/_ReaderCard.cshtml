@@ -1,0 +1,33 @@
+﻿@model Reader
+
+@*<div class="card" style="width:400px">
+    <div class="card-body bg-dark">
+
+        <h2 class="card-title">@Model.Name</h2>
+        <h4 class="card-text">@Model.ISBN</h4>
+        <h4 class="card-text">@Model.Address</h4>
+        <h4 class="card-text">@Model.Phone</h4>
+        <h4 class="card-text">@Model.Email</h4>
+
+
+    </div>
+</div>*@
+
+
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="~/img/reader.jpg" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body"> <br />
+                <h2 class="card-title"> <small>Name:</small>     @Model.Name</h2> <br />
+                <h4 class="card-text">   <small>ISBN:</small>     @Model.ISBN</h4>
+                <h4 class="card-text">   <small>Address:</small>  @Model.Address</h4>
+                <h4 class="card-text">   <small>Phone:</small>    @Model.Phone</h4>
+                <h4 class="card-text">   <small>E-mail:</small>   @Model.Email</h4>
+            </div>                      
+        </div>
+    </div>
+</div>
+
